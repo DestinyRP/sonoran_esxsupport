@@ -36,7 +36,11 @@ if pluginConfig.enabled then
 
     -- Helper function to get the ESX Identity object from your database
     function GetIdentity(target, cb)
-        local xPlayer = ESX.GetPlayerFromId(target)
+        local xPlayer = nil
+		while not xPlayer do
+			xPlayer = ESX.GetPlayerFromId(target)
+			Citizen.Wait(1000)
+		end
         if xPlayer ~= nil then
             debugLog("GetIdentity OK")
             if cb ~= nil then

@@ -29,7 +29,7 @@ if pluginConfig.enabled then
                 Citizen.Wait(10)
             end
 
-            while ESX.GetPlayerData() == nil do
+            while not ESX.GetPlayerData() or not ESX.GetPlayerData().job do
                 Citizen.Wait(10)
             end
 
